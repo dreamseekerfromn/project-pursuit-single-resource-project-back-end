@@ -18,26 +18,26 @@ const getOneMessage = async (id) => {
     }
 }
 
-/*
 const createMessage = async (item) => {
     console.log(item)
-    if(!item.name || !item.artist ){
+    const { user_name, time_stamp, thread_message, profile_pic, message_pic } = item;
+    if(!user_name || !time_stamp || !thread_message){
         return {error: "something is missing"};
     }
     try {
-        const oneSong = await db.any(`INSERT INTO songs (user_name, time_stamp, thread_message, profile_pic, message_pic) 
-            VALUES () RETURNING *`);
-        return oneSong;
+        const message = await db.one(`INSERT INTO forums (user_name, time_stamp, thread_message, profile_pic, message_pic) 
+            VALUES ($1, $2, $3, $4, $5) RETURNING *`, [user_name, time_stamp, thread_message, profile_pic, message_pic]);
+        return message;
     } catch(err){
         return err;
     }
 }
-*/
 
 /*
-const updateOneSong = async(id, body) => {
+const updateMessage = async(id, body) => {
+    const { user_name, time_stamp, thread_message, profile_pic, message_pic } = item;
     try {
-        const song = await db.any(`UPDATE songs SET name='${body.name}', artist='${body.artist}', album='${body.album}', time='${body.time}', is_favorite=${body.is_favorite} WHERE id = ${id} RETURNING *`);
+        const song = await db.any(`UPDATE forums SET time_stamp=$1, thread_message=$2, message_pic=$3, profile_pic=$4 WHERE id = ${id} RETURNING *`,[time_stamp, thread_message, profile_pic, message_pic]);
         return song;
     } catch(err){
         return err;

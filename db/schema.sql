@@ -15,6 +15,6 @@ CREATE TABLE forums (
     user_name TEXT REFERENCES users (user_name) ON DELETE CASCADE,
     time_stamp TEXT NOT NULL,
     thread_message TEXT NOT NULL,
-    profile_pic TEXT NOT NULL,
-    message_pic TEXT NOT NULL,
+    profile_pic TEXT,
+    message_pic TEXT,
 );
