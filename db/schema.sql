@@ -5,8 +5,8 @@ CREATE DATABASE thread_db_dev;
 
 CREATE TABLE users (
     user_id SERIAL PRIMARY KEY,
-    user_name TEXT NOT NULL,
-    user_password TEXT NOT NULL,
+    user_name VARCHAR(40) NOT NULL,
+    user_password VARCHAR(40) NOT NULL,
     manager BOOLEAN
 );
 
