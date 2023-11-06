@@ -59,4 +59,5 @@ module.exports = {
     getAllMessages,
     getOneMessage,
     deleteOneMessage,
+    createMessage,
 }

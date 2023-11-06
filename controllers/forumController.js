@@ -1,5 +1,6 @@
 const express = require("express");
-const { getAllMessages, getOneMessage, deleteOneMessage } = require("../queries/forums");
+const { getAllMessages, getOneMessage, deleteOneMessage, createMessage } = require("../queries/forums");
+const { checkBody } = require("../middlewares/validations");
 const forums = express.Router();
 
 /** get */
@@ -29,6 +30,16 @@ forums.get("/:id", async (req, res) => {
     }
 });
 
+forums.post("/", checkBody, async (req, res) => {
+    //const {name, artist, album, time, is_favorite} = req.body;
+    const forums = await createMessage(req.body);
+    if(forums){
+        res.status(200).json(forums);
+    }
+    else{
+        res.status(400).json("wrong");
+    }
+});
 /** delete */
 forums.delete("/:id", async (req, res) => {
     const { id } = req.params;
