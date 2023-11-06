@@ -12,9 +12,17 @@ CREATE TABLE users (
 
 CREATE TABLE forums (
     thread_id SERIAL PRIMARY KEY,
-    user_name TEXT REFERENCES users (user_name) ON DELETE CASCADE,
+    user_id INTEGER REFERENCES users (user_name) ON DELETE CASCADE,
+    user_name TEXT NOT NULL,
     time_stamp TEXT NOT NULL,
     thread_message TEXT NOT NULL,
     profile_pic TEXT,
     message_pic TEXT,
 );
+
+CREATE TABLE replys {
+    replys_id SERIAL PRIMARY KEY,
+    thread_id INTEGER REFERENCES forums (thread_id) ON DELETE CASCADE,
+    reply_user TEXT NOT NULL,
+    reply_message TEXT NOT NULL,
+}

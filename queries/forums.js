@@ -37,8 +37,8 @@ const createMessage = async (item) => {
 const updateMessage = async(id, body) => {
     const { user_name, time_stamp, thread_message, profile_pic, message_pic } = item;
     try {
-        const song = await db.any(`UPDATE forums SET time_stamp=$1, thread_message=$2, message_pic=$3, profile_pic=$4 WHERE id = ${id} RETURNING *`,[time_stamp, thread_message, profile_pic, message_pic]);
-        return song;
+        const message = await db.any(`UPDATE forums SET time_stamp=$1, thread_message=$2, message_pic=$3, profile_pic=$4 WHERE id = ${id} RETURNING *`,[time_stamp, thread_message, profile_pic, message_pic]);
+        return message;
     } catch(err){
         return err;
     }
