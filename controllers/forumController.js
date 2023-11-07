@@ -26,7 +26,7 @@ forums.get("/:id", async (req, res) => {
     }
     else{
         //do something for queries
-        res.status(404).json("wrong");
+        res.status(404).json({ success: false, data: { error: "Server Error - we didn't do it!" } });
     }
 });
 
@@ -40,6 +40,7 @@ forums.post("/", checkBody, async (req, res) => {
         res.status(400).json("wrong");
     }
 });
+
 /** delete */
 forums.delete("/:id", async (req, res) => {
     const { id } = req.params;
