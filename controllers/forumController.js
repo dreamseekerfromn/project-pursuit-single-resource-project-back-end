@@ -6,6 +6,7 @@ const forums = express.Router();
 /** get */
 forums.get("/", async (req, res) => {
     const messages = await getAllMessages();
+    console.log(messages);
     if(messages[0]){
         //no query, show everything
         res.status(200).json(messages);
