@@ -11,7 +11,7 @@ app.get("/", (request, response) => {
     response.send("Hello World!");
 });
 
-app.use("/forums", forums);
+app.use("/posts", forums);
 
 // 404 Page not found
 app.get("*", (req, res) => {
