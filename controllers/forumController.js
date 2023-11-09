@@ -9,7 +9,7 @@ forums.get("/", async (req, res) => {
     console.log(messages);
     if(messages[0]){
         //no query, show everything
-        res.status(200).json(messages);
+        res.status(200).json({ success: true, data: { payload: messages } });
     }
     else{
         //do something for queries
@@ -23,7 +23,7 @@ forums.get("/:id", async (req, res) => {
     const message = await getOneMessage(id);
     if(message[0] && message.length >= 1){
         //no query, show everything
-        res.status(200).json(message[0]);
+        res.status(200).json({ success: true, data: { payload: message[0] } });
     }
     else{
         //do something for queries
