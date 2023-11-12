@@ -19,6 +19,7 @@ const getOneMessage = async (id) => {
 }
 
 const createMessage = async (item) => {
+    console.log("receive")
     console.log(item)
     const { user_name, time_stamp, thread_message, profile_pic, message_pic } = item;
     if(!user_name || !time_stamp || !thread_message){
