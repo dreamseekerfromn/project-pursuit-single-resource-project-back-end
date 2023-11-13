@@ -10,8 +10,9 @@ const getAllMessages = async () => {
 }
 
 const getOneMessage = async (id) => {
+    console.log(id)
     try{
-        const message = await db.any(`SELECT * FROM forums WHERE id = ${id}`);
+        const message = await db.any(`SELECT * FROM forums WHERE thread_id = ${id}`);
         return message;
     } catch(err) {
         return err;

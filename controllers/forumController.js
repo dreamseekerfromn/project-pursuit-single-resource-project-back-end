@@ -19,8 +19,9 @@ forums.get("/", async (req, res) => {
 
 forums.get("/:id", async (req, res) => {
     const { id } = req.params;
-
+    console.log("id is ..." + id)
     const message = await getOneMessage(id);
+    console.log(message)
     if(message[0] && message.length >= 1){
         //no query, show everything
         res.status(200).json({ success: true, data: { payload: message[0] } });
