@@ -8,11 +8,11 @@ replies.get("/:id", async (req, res) => {
     const { id } = req.params;
 
     const message = await getReplies(id);
-    if(message[0] && message.length >= 1){
+    try{
         //no query, show everything
-        res.status(200).json({ success: true, data: { payload: message[0] } });
+        res.status(200).json({ success: true, data: { payload: message } });
     }
-    else{
+    catch(err){
         //do something for queries
         res.status(404).json({ success: false, data: { error: "Server Error - we didn't do it!" } });
     }
@@ -47,4 +47,4 @@ replies.get("*", (req, res) => {
     res.status(404).send("with incorrect id - sets status to 404 and returns error key");
 });
 
-module.exports = forums;
+module.exports = replies;

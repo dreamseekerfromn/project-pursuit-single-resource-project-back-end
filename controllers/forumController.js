@@ -33,13 +33,12 @@ forums.get("/:id", async (req, res) => {
 
 forums.post("/", checkBody, async (req, res) => {
     //const {name, artist, album, time, is_favorite} = req.body;
-    const forums = await createMessage(req.body);
-    console.log(forums)
-    if(forums){
-        res.status(200).json(forums);
-    }
-    else{
-        res.status(400).json("wrong");
+    try{
+        const forums = await createMessage(req.body);
+        console.log(forums)
+        //res.json(forums);
+    } catch(error) {
+        res.status(400).json({error: "something missing in your header"});
     }
 });
 

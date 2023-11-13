@@ -24,7 +24,8 @@ CREATE TABLE replies (
     reply_id SERIAL PRIMARY KEY,
     thread_id INTEGER REFERENCES forums (thread_id) ON DELETE CASCADE,
     reply_user TEXT NOT NULL,
-    reply_message TEXT NOT NULL
+    reply_message TEXT NOT NULL,
+    reply_timestamp TEXT NOT NULL
 );
 
 CREATE TABLE reply_pw (
