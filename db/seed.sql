@@ -6,6 +6,6 @@ VALUES
 ('david_bowie', 'asdf1234', false),
 ('manager', 'password', true);
 
-INSERT INTO forums (user_name, time_stamp, thread_message, profile_pic, message_pic)
+INSERT INTO posts (user_name, time_stamp, thread_message, profile_pic, message_pic)
 VALUES 
 ('manager', '1699215839', 'Hello World!', '', '');
