@@ -10,7 +10,7 @@ CREATE TABLE users (
     manager BOOLEAN
 );
 
-CREATE TABLE forums (
+CREATE TABLE posts (
     thread_id SERIAL PRIMARY KEY,
     user_id INTEGER REFERENCES users (user_id) ON DELETE CASCADE,
     user_name TEXT NOT NULL,
