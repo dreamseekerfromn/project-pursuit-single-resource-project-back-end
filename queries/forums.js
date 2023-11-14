@@ -50,7 +50,7 @@ const updateMessage = async(id, body) => {
 const deleteOneMessage = async(id) => {
     //console.log(id);
     try {
-        const message = await db.one(`DELETE FROM forums WHERE id = ${id} RETURNING *`);
+        const message = await db.one(`DELETE FROM forums WHERE thread_id = ${id} RETURNING *`);
         return message;
     } catch(err){
         return err;

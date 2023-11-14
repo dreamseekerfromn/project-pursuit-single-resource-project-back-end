@@ -11,14 +11,11 @@ const getReplies = async (id) => {
 
 const createReply = async (item) => {
     console.log(item)
-    const { thread_id, reply_user, reply_message, reply_pw } = item;
-    if(!replys_id || !reply_user || !reply_message || reply_pw){
-        return {error: "something is missing"};
-    }
+    const { reply_id, thread_id, reply_user, reply_message, reply_pw } = item;
     try {
         const message = await db.one(`INSERT INTO replies (reply_id, reply_user, reply_message) 
             VALUES ($1, $2, $3) RETURNING *`, [thread_id, reply_user, reply_message]);
-        const reply_pw = await db.one(`INSERT INTO reply_pw (reply_id, reply_pw) VALUES ($1, $2)`, [message["reply_id"], reply_pw])
+        const reply_pw_table = await db.one(`INSERT INTO reply_pw (reply_id, reply_pw) VALUES ($1, $2)`, [reply_id, reply_pw])
         return message;
     } catch(err){
         return err;

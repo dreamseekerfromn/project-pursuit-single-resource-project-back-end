@@ -21,6 +21,9 @@ replies.get("/:id", async (req, res) => {
 replies.post("/", async (req, res) => {
     //const {name, artist, album, time, is_favorite} = req.body;
     const forums = await createReply(req.body);
+    console.log("hi")
+    console.log("forum is")
+    console.log(forums)
     if(forums){
         res.status(200).json(forums);
     }
