@@ -26,40 +26,54 @@ const createReply = async (item) => {
     }
 }
 
-/*
-const updateMessage = async(id, body) => {
-    const { user_name, time_stamp, thread_message, profile_pic, message_pic, reply_pw, reply_id } = item;
+const updateReply = async(id, body) => {
+    const { reply_timestamp, thread_id, reply_user, reply_message, reply_pw } = item;
     try {
         const pw = await db.one(`SELECT * FROM reply_pw WHERE reply_id = ${reply_id}`);
         if (pw.reply_pw == reply_pw){
             try{
-                const message = await db.any(`UPDATE forums SET time_stamp=$1, thread_message=$2, message_pic=$3, profile_pic=$4 WHERE reply_id = ${id} RETURNING *`,[time_stamp, thread_message, profile_pic, message_pic]);
+                const message = await db.any(`UPDATE replies SET reply_timestamp=$1, reply_message=$2 WHERE reply_id = ${id} RETURNING *`,[reply_timestamp, reply_message]);
                 return message;
-
             }catch(err){
                 return err;
             }
         } else{
-            return {};
+            return {error: "wrong pw"};
         }
     } catch(err){
         return err;
     }
 }
-*/
-/*
-const deleteOneMessage = async(id) => {
-    //console.log(id);
+
+
+const deleteOneReply = async(id, body) => {
+    const {reply_pw} = body;
+    console.log("reply_pw is " + reply_pw);
     try {
-        const message = await db.one(`DELETE FROM forums WHERE reply_id = ${id} RETURNING *`);
-        return message;
+        const pw = await db.one(`SELECT * FROM reply_pw WHERE reply_id = ${id}`);
+        console.log("pw is " + pw);
+        if (pw.reply_pw == reply_pw){
+            try{
+                console.log("entered")
+                const message = await db.one(`DELETE FROM replies WHERE reply_id = ${id} RETURNING *`);
+                return message;
+            } catch(err){
+                return err;
+            }
+        }
+        else{
+            return {error: "wrong pw"};
+        }
     } catch(err){
+        console.log(err)
         return err;
     }
 }
-*/
+
 
 module.exports = {
     getReplies,
     createReply,
+    updateReply,
+    deleteOneReply,
 }

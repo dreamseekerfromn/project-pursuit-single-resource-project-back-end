@@ -1,6 +1,6 @@
 const express = require("express");
 const { checkBody } = require("../middlewares/validations");
-const { getReplies, createReply } = require("../queries/replies");
+const { getReplies, createReply, deleteOneReply } = require("../queries/replies");
 const replies = express.Router();
 
 /** get */
@@ -21,7 +21,7 @@ replies.get("/:id", async (req, res) => {
 replies.post("/", async (req, res) => {
     //const {name, artist, album, time, is_favorite} = req.body;
     const forums = await createReply(req.body);
-    
+
     if(forums){
         res.status(200).json(forums);
     }
@@ -31,10 +31,12 @@ replies.post("/", async (req, res) => {
 });
 
 /** delete */
-/*
+
 replies.delete("/:id", async (req, res) => {
     const { id } = req.params;
-    const message = await delete(id);
+    console.log("delete reply id " + id);
+    console.log(req.body);
+    const message = await deleteOneReply(id, req.body);
     if(message){
         res.status(200).json(message);
     }
@@ -42,7 +44,7 @@ replies.delete("/:id", async (req, res) => {
         res.status(404).json("wrong");
     }
 });
-*/
+
 /** page 404 */
 replies.get("*", (req, res) => {
     res.status(404).send("with incorrect id - sets status to 404 and returns error key");
