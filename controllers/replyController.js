@@ -20,6 +20,7 @@ replies.get("/:id", async (req, res) => {
 
 replies.post("/", async (req, res) => {
     //const {name, artist, album, time, is_favorite} = req.body;
+
     const posts = await createReply(req.body);
     
     if(posts){
@@ -31,6 +32,7 @@ replies.post("/", async (req, res) => {
 });
 
 /** delete */
+
 replies.delete("/:id", async (req, res) => {
     const { id } = req.params;
     const message = await deleteOneReply(id, req.body);
