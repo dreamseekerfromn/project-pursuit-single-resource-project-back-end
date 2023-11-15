@@ -22,7 +22,7 @@ CREATE TABLE posts (
 
 CREATE TABLE replies (
     reply_id SERIAL PRIMARY KEY,
-    thread_id INTEGER REFERENCES forums (thread_id) ON DELETE CASCADE,
+    thread_id INTEGER REFERENCES posts (thread_id) ON DELETE CASCADE,
     reply_user TEXT NOT NULL,
     reply_message TEXT NOT NULL,
     reply_timestamp TEXT

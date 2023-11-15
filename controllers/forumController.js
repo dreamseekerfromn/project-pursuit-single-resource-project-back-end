@@ -1,10 +1,10 @@
 const express = require("express");
-const { getAllMessages, getOneMessage, deleteOneMessage, createMessage } = require("../queries/forums");
+const { getAllMessages, getOneMessage, deleteOneMessage, createMessage } = require("../queries/posts");
 const { checkBody } = require("../middlewares/validations");
-const forums = express.Router();
+const posts = express.Router();
 
 /** get */
-forums.get("/", async (req, res) => {
+posts.get("/", async (req, res) => {
     const messages = await getAllMessages();
     console.log(messages);
     if(messages[0]){
@@ -17,7 +17,7 @@ forums.get("/", async (req, res) => {
     }
 });
 
-forums.get("/:id", async (req, res) => {
+posts.get("/:id", async (req, res) => {
     const { id } = req.params;
     console.log("id is ..." + id)
     const message = await getOneMessage(id);
@@ -32,19 +32,19 @@ forums.get("/:id", async (req, res) => {
     }
 });
 
-forums.post("/", checkBody, async (req, res) => {
+posts.post("/", checkBody, async (req, res) => {
     //const {name, artist, album, time, is_favorite} = req.body;
     try{
-        const forums = await createMessage(req.body);
-        console.log(forums)
-        //res.json(forums);
+        const posts = await createMessage(req.body);
+        console.log(posts)
+        //res.json(posts);
     } catch(error) {
         res.status(400).json({error: "something missing in your header"});
     }
 });
 
 /** delete */
-forums.delete("/:id", async (req, res) => {
+posts.delete("/:id", async (req, res) => {
     const { id } = req.params;
     const message = await deleteOneMessage(id);
     if(message){
@@ -56,8 +56,8 @@ forums.delete("/:id", async (req, res) => {
 });
 
 /** page 404 */
-forums.get("*", (req, res) => {
+posts.get("*", (req, res) => {
     res.status(404).send("with incorrect id - sets status to 404 and returns error key");
 });
 
-module.exports = forums;
+module.exports = posts;
