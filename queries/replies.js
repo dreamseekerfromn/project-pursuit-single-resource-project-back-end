@@ -27,7 +27,7 @@ const createReply = async (item) => {
 }
 
 const updateReply = async(id, body) => {
-    const { reply_timestamp, thread_id, reply_user, reply_message, reply_pw } = item;
+    const { reply_timestamp, reply_message, reply_pw } = item;
     try {
         const pw = await db.one(`SELECT * FROM reply_pw WHERE reply_id = ${reply_id}`);
         if (pw.reply_pw == reply_pw){

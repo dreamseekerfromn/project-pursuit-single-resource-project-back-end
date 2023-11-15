@@ -1,6 +1,6 @@
 const express = require("express");
 const { checkBody } = require("../middlewares/validations");
-const { getReplies, createReply, deleteOneReply } = require("../queries/replies");
+const { getReplies, createReply, deleteOneReply, updateReply } = require("../queries/replies");
 const replies = express.Router();
 
 /** get */
@@ -43,6 +43,19 @@ replies.delete("/:id", async (req, res) => {
         res.status(404).json("wrong");
     }
 });
+
+replies.put("/:id", async (req, res) => {
+    const {id} = req.params;
+
+    const reply = await updateReply(id, req.body);
+    if(reply){
+        res.status(200).json(reply);
+    }
+    else{
+        res.status(400).json("wrong")
+    }
+});
+
 
 /** page 404 */
 replies.get("*", (req, res) => {
