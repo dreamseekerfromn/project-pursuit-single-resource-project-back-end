@@ -1,7 +1,7 @@
 const express = require("express");
 const cors = require("cors");
 const app = express();
-const forums = require('./controllers/forumController.js');
+const forums = require('./controllers/postController.js');
 const replies = require("./controllers/replyController.js");
 
 app.use(cors());
