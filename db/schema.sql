@@ -13,8 +13,8 @@ CREATE TABLE users (
 CREATE TABLE posts (
     thread_id SERIAL PRIMARY KEY,
     user_id INTEGER REFERENCES users (user_id) ON DELETE CASCADE,
-    user_name TEXT NOT NULL,
-    time_stamp TEXT NOT NULL,
+    user_name VARCHAR(40) NOT NULL,
+    time_stamp BIGINT NOT NULL,
     thread_message TEXT NOT NULL,
     profile_pic TEXT,
     message_pic TEXT
@@ -23,9 +23,9 @@ CREATE TABLE posts (
 CREATE TABLE replies (
     reply_id SERIAL PRIMARY KEY,
     thread_id INTEGER REFERENCES posts (thread_id) ON DELETE CASCADE,
-    reply_user TEXT NOT NULL,
+    reply_user VARCHAR(40) NOT NULL,
     reply_message TEXT NOT NULL,
-    reply_timestamp TEXT
+    reply_timestamp BIGINT NOT NULL
 );
 
 CREATE TABLE reply_pw (
