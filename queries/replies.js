@@ -47,6 +47,7 @@ const updateReply = async(id, body) => {
 
 
 const deleteOneReply = async(id, body) => {
+    console.log(body);
     const {reply_pw} = body;
     console.log("reply_pw is " + reply_pw);
     try {
