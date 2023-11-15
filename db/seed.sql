@@ -8,7 +8,7 @@ VALUES
 
 INSERT INTO posts (user_name, time_stamp, thread_message, profile_pic, message_pic)
 VALUES 
-('Atsiklidis', 1699215839, 'I am the first to ever post on the POSTR app. Firsts','https://avatars.githubusercontent.com/u/129804495?v=4', 'https://encrypted-tbn3.gstatic.com/shopping?q=tbn:ANd9GcRzPqYCsL1DMmMCTEBEw23FkY1F8XxcY2ibyS1CcgWvM8e0IY2O26rOHr1omuv55qsNgLhIlwBGn4ZGwscBVIiRIN3knWzeFSZObJkP7LedZMIE_G5fpSdQDTNcBoenGnP6aLlq8sQ&usqp=CAc'),
+('Atsiklidis', 1700325839, 'I am the first to ever post on the POSTR app. Firsts','https://avatars.githubusercontent.com/u/129804495?v=4', ''),
 ('SungY', 1700315839, 'Hi, I am the second ever to post on POSTR! WOOT WOOT!', 'https://avatars.githubusercontent.com/u/10932336?v=4', ''),
 ('NaturePhotographer', 1697425839, 'Capturing the beauty of nature through my lens. #Photography', 'https://avatars.githubusercontent.com/u/43210987?v=4', 'https://example.com/naturephotographer_pic.jpg'),
 ('CoffeeEnthusiast', 1697335839, 'Exploring local coffee shops and their unique blends. ☕ #CoffeeLover', 'https://avatars.githubusercontent.com/u/32109876?v=4', 'https://example.com/coffeeenthusiast_pic.jpg'),

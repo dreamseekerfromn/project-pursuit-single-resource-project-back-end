@@ -35,7 +35,7 @@ const createMessage = async (item) => {
     }
 }
 
-/*
+
 const updateMessage = async(id, body) => {
     const { user_name, time_stamp, thread_message, profile_pic, message_pic } = item;
     try {
@@ -45,7 +45,7 @@ const updateMessage = async(id, body) => {
         return err;
     }
 }
-*/
+
 
 const deleteOneMessage = async(id) => {
     //console.log(id);
