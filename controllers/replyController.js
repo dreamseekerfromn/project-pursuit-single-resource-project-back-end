@@ -20,10 +20,11 @@ replies.get("/:id", async (req, res) => {
 
 replies.post("/", async (req, res) => {
     //const {name, artist, album, time, is_favorite} = req.body;
-    const forums = await createReply(req.body);
 
-    if(forums){
-        res.status(200).json(forums);
+    const posts = await createReply(req.body);
+    
+    if(posts){
+        res.status(200).json(posts);
     }
     else{
         res.status(400).json("wrong");
@@ -34,8 +35,6 @@ replies.post("/", async (req, res) => {
 
 replies.delete("/:id", async (req, res) => {
     const { id } = req.params;
-    console.log("delete reply id " + id);
-    console.log(req.body);
     const message = await deleteOneReply(id, req.body);
     if(message){
         res.status(200).json(message);
