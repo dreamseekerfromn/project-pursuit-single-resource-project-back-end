@@ -9,7 +9,7 @@ posts.get("/", async (req, res) => {
     console.log(messages);
     if(messages[0]){
         //no query, show everything
-        res.status(200).json({ success: true, data: { payload: messages } });
+        res.status(200).json({ success: true, data: { payload: [...messages] } });
     }
     else{
         //do something for queries
